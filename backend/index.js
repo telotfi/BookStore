@@ -3,10 +3,14 @@
  const app=express()
  const catRoutes=require("./routes/categoryRoutes")
  const bookRoutes=require("./routes/bookRoutes")
+ const userRoutes=require("./routes/userRoutes")
+ const cors = require("cors");
+ app.use(cors())
+ app.use(express.urlencoded({extended:true}))
  app.use(express.json())
  app.use("/categories",catRoutes)
  app.use("/books",bookRoutes)
-
+ app.use("/users",userRoutes)
 require("dotenv").config()
 
       mongoose.connect(process.env.MONGO_URL).then(result=>
